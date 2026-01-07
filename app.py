@@ -13,7 +13,7 @@ from nltk.corpus import stopwords
 # ==========================================
 # 1. PAGE CONFIG & SETUP
 # ==========================================
-st.set_page_config(page_title="Vibe Check: AI Love Detector", page_icon="❤️", layout="wide")
+st.set_page_config(page_title="Love Angle", page_icon="❤️", layout="wide")
 
 # Download NLTK data (Cached so it runs only once)
 @st.cache_resource
@@ -29,7 +29,7 @@ english_stops = setup_nltk()
 @st.cache_resource
 def load_ai_models():
     """
-    Loads the 'Dream Team' Ensemble.
+    Loads the 3 Models and we will apply Ensemble technique.
     """
     try:
         # 1. HINGLISH SENTIMENT
@@ -221,7 +221,7 @@ def calculate_pillar_3_ensemble(df, s_pipe, e_pipe, c_pipe):
 st.title("💓 Love Angle")
 
 with st.sidebar:
-    st.header("AI System")
+    st.header("NLP Models Load")
     s_pipe, e_pipe, c_pipe, tok = load_ai_models()
     if s_pipe: 
         st.success("Models Ready ✅")
@@ -300,3 +300,4 @@ if uploaded_file and s_pipe:
                     st.plotly_chart(px.bar(word_df, x='Count', y='Word', orientation='h'), use_container_width=True)
         else:
             st.error("Could not parse the chat file. Please ensure it is a valid WhatsApp .txt export.")
+
