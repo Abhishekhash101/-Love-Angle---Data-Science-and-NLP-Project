@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+plotly
+advertools
+transformers
+torch
+scipy
+sentencepiece
+protobuf
